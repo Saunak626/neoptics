@@ -1,0 +1,13 @@
+case_id: preterm_wrist_reflectance_660nm_46c31831
+profile: preterm_wrist
+mode: reflectance
+wavelength_nm: 660
+nphoton: 100000
+voxel_size_mm: 0.2
+detected_photons_total: 0
+detected_weight_total: 0.0
+source_mm: [3.2, -7.45, 0.0]
+detector_mm: [[7.2, -7.5, 0.0, 0.6]]
+has_detected_samples: False
+scene_mode: stable_approximate_3d
+view_order: scene_3d_preview.png -> fluence_z.png -> detector_summary.csv

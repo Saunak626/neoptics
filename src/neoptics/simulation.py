@@ -24,7 +24,12 @@ from .constants import SUPPORTED_MODES
 from .geometry import build_wrist_volume, save_volume_preview
 from .optics import build_prop_table
 from .sensors import build_reflectance_sensor, build_transmittance_sensor
-from .visualization import plot_cross_section, plot_detector_summary, plot_trajectories
+from .visualization import (
+    plot_cross_section,
+    plot_detector_summary,
+    plot_interactive_case,
+    plot_trajectories,
+)
 
 
 @dataclass
@@ -80,6 +85,8 @@ def _is_complete_case_dir(case_dir: Path) -> bool:
         case_dir / "fluence.npy",
         case_dir / "detector_summary.csv",
         case_dir / "fluence_z.png",
+        case_dir / "scene_3d_preview.png",
+        case_dir / "case_overview.txt",
     ]
     return all(path.exists() for path in required)
 
@@ -93,7 +100,11 @@ def _load_existing_case(case_dir: Path) -> dict[str, Any]:
     fluence = np.load(case_dir / "fluence.npy")
     return {
         "metadata": metadata,
-        "paths": {"case_dir": str(case_dir)},
+        "paths": {
+            "case_dir": str(case_dir),
+            "scene_3d_preview": str(case_dir / "scene_3d_preview.png"),
+            "case_overview": str(case_dir / "case_overview.txt"),
+        },
         "pmcx_result": None,
         "detector_summary": detector_summary,
         "fluence_shape": tuple(fluence.shape),
@@ -207,8 +218,51 @@ def run_single_case(case_config: CaseConfig | dict[str, Any]) -> dict[str, Any]:
         "pmcx_stat": to_serializable(pmcx_result.get("stat", {})),
         "geometry_metadata": geometry_metadata,
         "sensor_config": sensor_config,
+        "display": {
+            "recommended_axis": "z",
+            "scene_mode": "stable_approximate_3d",
+            "trajectory_note": "This view uses fluence and detected-photon samples instead of full continuous trajectories.",
+            "source_mm": to_serializable(sensor_config["source_mm"]),
+            "source_voxel": to_serializable(sensor_config["srcpos"]),
+            "detector_mm": to_serializable(sensor_config["detectors_mm"]),
+            "detector_voxel": to_serializable(sensor_config["detpos"]),
+            "show_fluence": True,
+            "show_detected_samples": bool(parsed_samples_path),
+        },
     }
     dump_json_file(case_dir / "metadata.json", metadata)
+
+    result_bundle["metadata"] = metadata
+    result_bundle["detector_summary"] = detector_summary_df
+    result_bundle["paths"] = {"case_dir": str(case_dir)}
+    paths["scene_3d_preview"] = str(
+        plot_interactive_case(
+            result_bundle,
+            show_fluence=True,
+            show_samples=True,
+            screenshot_path=case_dir / "scene_3d_preview.png",
+            open_interactive=False,
+        )
+    )
+
+    overview_lines = [
+        f"case_id: {case_id}",
+        f"profile: {case.profile}",
+        f"mode: {case.mode}",
+        f"wavelength_nm: {case.wavelength_nm}",
+        f"nphoton: {case.nphoton}",
+        f"voxel_size_mm: {case.voxel_size_mm}",
+        f"detected_photons_total: {metadata['detected_photons_total']}",
+        f"detected_weight_total: {metadata['detected_weight_total']}",
+        f"source_mm: {sensor_config['source_mm']}",
+        f"detector_mm: {sensor_config['detectors_mm']}",
+        f"has_detected_samples: {bool(parsed_samples_path)}",
+        "scene_mode: stable_approximate_3d",
+        "view_order: scene_3d_preview.png -> fluence_z.png -> detector_summary.csv",
+    ]
+    overview_path = case_dir / "case_overview.txt"
+    overview_path.write_text("\n".join(overview_lines) + "\n", encoding="utf-8")
+    paths["case_overview"] = str(overview_path)
 
     return {
         "metadata": metadata,

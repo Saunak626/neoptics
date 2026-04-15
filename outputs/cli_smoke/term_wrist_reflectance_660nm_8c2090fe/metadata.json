@@ -1,0 +1,148 @@
+{
+  "case_id": "term_wrist_reflectance_660nm_8c2090fe",
+  "detected_photons_total": 0,
+  "detected_weight_total": 0.0,
+  "fluence_shape": [
+    160,
+    140,
+    80
+  ],
+  "geometry_metadata": {
+    "computed": {
+      "artery_center_y_mm": -6.8,
+      "dorsal_surface_y_mm": 8.5,
+      "palmar_surface_y_mm": -8.5,
+      "vein_center_y_mm": -5.7
+    },
+    "domain_mm": {
+      "x": 32.0,
+      "y": 28.0,
+      "z": 16.0
+    },
+    "include_vein": false,
+    "labels": {
+      "air": 0,
+      "arterial_blood": 5,
+      "bone": 4,
+      "fat": 2,
+      "skin": 1,
+      "soft_tissue_or_muscle": 3,
+      "venous_blood_optional": 6
+    },
+    "parameters": {
+      "artery_center_x_mm": 3.6,
+      "artery_depth_mm": 1.7,
+      "artery_radius_mm": 0.35,
+      "axial_length_mm": 16.0,
+      "fat_thickness_mm": 3.2,
+      "include_vein": false,
+      "outer_thickness_mm": 17.0,
+      "outer_width_mm": 21.0,
+      "radius_bone_center_xy_mm": [
+        3.5,
+        2.3
+      ],
+      "radius_bone_semi_axes_mm": [
+        2.3,
+        1.5
+      ],
+      "skin_thickness_mm": 1.0,
+      "ulna_bone_center_xy_mm": [
+        -4.0,
+        2.0
+      ],
+      "ulna_bone_semi_axes_mm": [
+        1.9,
+        1.3
+      ],
+      "vein_center_x_mm": 1.5,
+      "vein_depth_mm": 2.8,
+      "vein_radius_mm": 0.5
+    },
+    "profile": "term_wrist",
+    "shape": [
+      160,
+      140,
+      80
+    ],
+    "voxel_size_mm": 0.2
+  },
+  "geometry_overrides": {},
+  "has_trajectory_samples": false,
+  "include_vein": false,
+  "mode": "reflectance",
+  "nphoton": 5000,
+  "pmcx_stat": {
+    "energyabs": 1429.5030673099682,
+    "energytot": 5000.0,
+    "normalizer": 1000000.0,
+    "nphoton": 5000,
+    "runtime": 12,
+    "unitinmm": 0.20000000298023224,
+    "workload": [
+      21760.0
+    ]
+  },
+  "profile": "term_wrist",
+  "seed": 20260415,
+  "sensor_config": {
+    "detector_radius_mm": 0.6,
+    "detectors_mm": [
+      [
+        7.6,
+        -8.5,
+        0.0,
+        0.6
+      ]
+    ],
+    "detpos": [
+      [
+        118.0,
+        27.5,
+        40.0,
+        2.9999999999999996
+      ]
+    ],
+    "mode": "reflectance",
+    "sensor_overrides": {
+      "center_on_artery_projection": true,
+      "default_separation_mm": 4.0,
+      "detector_axis": "x",
+      "detector_radius_mm": 0.6,
+      "separation_mm": 4.0,
+      "source_radius_mm": 0.4,
+      "source_type": "pencil",
+      "surface_inset_mm": 0.05,
+      "sweep_separation_mm": [
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0
+      ]
+    },
+    "source_mm": [
+      3.6,
+      -8.45,
+      0.0
+    ],
+    "source_radius_mm": 0.4,
+    "source_radius_vox": 2.0,
+    "source_type": "pencil",
+    "srcdir": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "srcpos": [
+      98.0,
+      27.750000000000004,
+      40.0
+    ]
+  },
+  "sensor_overrides": {
+    "separation_mm": 4.0
+  },
+  "voxel_size_mm": 0.2,
+  "wavelength_nm": 660
+}

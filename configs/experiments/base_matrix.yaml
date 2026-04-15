@@ -1,0 +1,69 @@
+experiment_name: base_matrix
+
+execution:
+  stage: dev
+  include_sweeps: false
+  force_rerun: false
+  output_root: outputs/base_matrix
+
+runtime:
+  dev:
+    voxel_size_mm: 0.2
+    nphoton: 5000
+    seed: 20260415
+    save_trajectory: false
+  final:
+    voxel_size_mm: 0.1
+    nphoton: 100000
+    seed: 20260415
+    save_trajectory: true
+
+base_matrix:
+  profiles: [preterm_wrist, term_wrist]
+  wavelengths_nm: [530, 660, 940]
+  modes: [reflectance, transmittance]
+  mode_defaults:
+    reflectance:
+      530: {separation_mm: 2.0}
+      660: {separation_mm: 4.0}
+      940: {separation_mm: 5.0}
+    transmittance:
+      530: {lateral_offset_mm: 0.0}
+      660: {lateral_offset_mm: 0.0}
+      940: {lateral_offset_mm: 0.0}
+
+sweeps:
+  reflectance:
+    profiles: [preterm_wrist, term_wrist]
+    wavelengths_nm: [530, 660, 940]
+    values_by_wavelength:
+      530: [1.0, 2.0, 3.0, 4.0]
+      660: [2.0, 3.0, 4.0, 5.0, 6.0]
+      940: [3.0, 4.0, 5.0, 6.0, 8.0]
+  transmittance:
+    profiles: [preterm_wrist, term_wrist]
+    wavelengths_nm: [530, 660, 940]
+    lateral_offset_mm: [-2.0, -1.0, 0.0, 1.0, 2.0]
+  structure:
+    skin_thickness_mm:
+      profiles: [preterm_wrist, term_wrist]
+      wavelengths_nm: [530, 660, 940]
+      modes: [reflectance]
+      values: [0.8, 1.0, 1.2]
+    fat_thickness_mm:
+      profiles:
+        preterm_wrist: [2.3, 2.8, 3.2, 3.5]
+        term_wrist: [2.8, 3.2, 3.5, 4.0]
+      wavelengths_nm: [530, 660, 940]
+      modes: [reflectance]
+    artery_depth_mm:
+      profiles: [preterm_wrist, term_wrist]
+      wavelengths_nm: [530, 660, 940]
+      modes: [reflectance]
+      values: [1.2, 1.5, 1.7, 2.0]
+    artery_diameter_mm:
+      profiles:
+        preterm_wrist: [0.5, 0.7, 0.9]
+        term_wrist: [0.5, 0.7, 0.9]
+      wavelengths_nm: [530, 660, 940]
+      modes: [reflectance]

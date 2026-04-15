@@ -1,0 +1,2 @@
+case_id,detector_id,detector_x_vox,detector_y_vox,detector_z_vox,detector_radius_vox,detected_photons,detected_weight,mean_total_pathlength_vox,max_total_pathlength_vox
+term_wrist_transmittance_530nm_f8cde289,1,98.0,112.5,40.0,4.0,1,1.0,663.047607421875,663.047607421875

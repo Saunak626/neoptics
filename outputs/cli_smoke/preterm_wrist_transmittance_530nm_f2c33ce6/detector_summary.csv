@@ -1,0 +1,2 @@
+case_id,detector_id,detector_x_vox,detector_y_vox,detector_z_vox,detector_radius_vox,detected_photons,detected_weight,mean_total_pathlength_vox,max_total_pathlength_vox
+preterm_wrist_transmittance_530nm_f2c33ce6,1,95.99999999999999,107.5,40.0,4.0,0,0.0,0.0,0.0

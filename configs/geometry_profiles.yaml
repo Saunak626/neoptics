@@ -1,0 +1,53 @@
+labels:
+  air: 0
+  skin: 1
+  fat: 2
+  soft_tissue_or_muscle: 3
+  bone: 4
+  arterial_blood: 5
+  venous_blood_optional: 6
+
+common:
+  voxel_size_mm_debug: 0.2
+  voxel_size_mm_final: 0.1
+  domain_mm:
+    x: 32.0
+    y: 28.0
+    z: 16.0
+
+profiles:
+  preterm_wrist:
+    outer_width_mm: 18.0
+    outer_thickness_mm: 15.0
+    axial_length_mm: 16.0
+    skin_thickness_mm: 1.0
+    fat_thickness_mm: 2.8
+    artery_radius_mm: 0.30
+    artery_center_x_mm: 3.2
+    artery_depth_mm: 1.7
+    vein_radius_mm: 0.40
+    vein_center_x_mm: 1.2
+    vein_depth_mm: 2.6
+    radius_bone_center_xy_mm: [3.0, 2.0]
+    radius_bone_semi_axes_mm: [2.0, 1.3]
+    ulna_bone_center_xy_mm: [-3.4, 1.8]
+    ulna_bone_semi_axes_mm: [1.6, 1.1]
+    include_vein: false
+
+  term_wrist:
+    outer_width_mm: 21.0
+    outer_thickness_mm: 17.0
+    axial_length_mm: 16.0
+    skin_thickness_mm: 1.0
+    fat_thickness_mm: 3.2
+    artery_radius_mm: 0.35
+    artery_center_x_mm: 3.6
+    artery_depth_mm: 1.7
+    vein_radius_mm: 0.50
+    vein_center_x_mm: 1.5
+    vein_depth_mm: 2.8
+    radius_bone_center_xy_mm: [3.5, 2.3]
+    radius_bone_semi_axes_mm: [2.3, 1.5]
+    ulna_bone_center_xy_mm: [-4.0, 2.0]
+    ulna_bone_semi_axes_mm: [1.9, 1.3]
+    include_vein: false

@@ -1,0 +1,36 @@
+reflectance:
+  common:
+    source_type: pencil
+    source_radius_mm: 0.4
+    detector_radius_mm: 0.6
+    center_on_artery_projection: true
+    surface_inset_mm: 0.05
+    detector_axis: x
+  wavelengths:
+    530:
+      default_separation_mm: 2.0
+      sweep_separation_mm: [1.0, 2.0, 3.0, 4.0]
+    660:
+      default_separation_mm: 4.0
+      sweep_separation_mm: [2.0, 3.0, 4.0, 5.0, 6.0]
+    940:
+      default_separation_mm: 5.0
+      sweep_separation_mm: [3.0, 4.0, 5.0, 6.0, 8.0]
+
+transmittance:
+  common:
+    source_type: pencil
+    source_radius_mm: 0.5
+    detector_radius_mm: 0.8
+    center_on_artery_projection: true
+    surface_inset_mm: 0.05
+  wavelengths:
+    530:
+      default_lateral_offset_mm: 0.0
+      sweep_lateral_offset_mm: [-2.0, -1.0, 0.0, 1.0, 2.0]
+    660:
+      default_lateral_offset_mm: 0.0
+      sweep_lateral_offset_mm: [-2.0, -1.0, 0.0, 1.0, 2.0]
+    940:
+      default_lateral_offset_mm: 0.0
+      sweep_lateral_offset_mm: [-2.0, -1.0, 0.0, 1.0, 2.0]

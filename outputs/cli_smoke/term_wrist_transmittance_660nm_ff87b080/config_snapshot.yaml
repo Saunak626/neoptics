@@ -1,0 +1,19 @@
+profile: term_wrist
+wavelength_nm: 660
+mode: transmittance
+nphoton: 5000
+seed: 20260415
+voxel_size_mm: 0.2
+geometry_overrides: null
+include_vein: false
+sensor_overrides:
+  lateral_offset_mm: 0.0
+save_fluence: true
+save_detector: true
+save_trajectory: false
+tstart: 0.0
+tend: 5.0e-09
+tstep: 5.0e-09
+output_root: outputs/cli_smoke
+case_id: null
+force_rerun: true
